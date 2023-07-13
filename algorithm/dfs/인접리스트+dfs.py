@@ -1,7 +1,7 @@
 
 V, E = map(int, input().split())
 
-# 인접행렬
+# 인접리스트
 adj_matrix = [[] for _ in range(V+1)]
 
 for _ in range(E):
