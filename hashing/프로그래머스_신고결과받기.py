@@ -49,7 +49,8 @@ def solution(id_list, report, k):
     return answer
 '''
 
-
+'''
+가독성이 안좋음
 def solution(id_list, report, k):
     user_idx = {}
     user_report_count = {}
@@ -78,4 +79,31 @@ def solution(id_list, report, k):
             for i in range(len(id_list)):
                 if (user_report_list[i][user_idx.get(key)] == 1):
                     answer[i] += 1
+    return answer
+'''
+
+# 강의 답안
+
+
+
+
+import collections
+def solution(id_list, report, k):
+    answer = []
+    # 중복 제거한다.
+    report = list(set(report))
+    reportHash = collections.defaultdict(set)
+    stoped = collections.defaultdict(int)
+
+    for x in report:
+        a, b = x.split(' ')
+        reportHash[a].add(b)
+        stoped[b] += 1
+
+    for name in id_list:
+        mail = 0
+        for user in reportHash[name]:
+            if stoped[user] >= k:
+                mail += 1
+        answer.append(mail)
     return answer
