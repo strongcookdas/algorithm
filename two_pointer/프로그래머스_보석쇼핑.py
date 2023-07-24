@@ -51,7 +51,7 @@ r_pointer가 움직이는 조건:
     모든 보석을 수집하기 위한 포인터이다.
 '''
 
-
+'''
 def solution(gems):
     gems_count = len(set(gems))
     gems_dict = {gems[0]: 1}
@@ -84,3 +84,27 @@ def solution(gems):
 
 
 print(solution(["ZZZ", "YYY", "NNNN", "YYY", "BBB"]))
+'''
+# 강의 답안
+
+
+
+
+import collections
+def solution(gems):
+    answer = [0, 0]
+    sH = collections.defaultdict(int)
+    k = len(set(gems))
+    lt = 0
+    maxL = 10000000
+    for rt in range(len(gems)):
+        sH[gems[rt]] += 1
+        while (len(sH) == k):
+            if rt-lt+1 < maxL:
+                maxL = rt-lt+1
+                answer[lt+1, rt+1]
+            sH[gems[lt]] -= 1
+            if sH[gems[lt]] == 0:
+                del sH[gems[lt]]
+            lt += 1
+    return answer
